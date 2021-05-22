@@ -1,0 +1,7 @@
+.menu {
+    background-color: #CED8F6; /*背景は薄青*/
+  }
+  .menu li {
+    padding: 4px 8px;
+    display: inline-block;
+  }

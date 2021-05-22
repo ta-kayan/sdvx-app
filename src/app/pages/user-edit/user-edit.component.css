@@ -1,0 +1,43 @@
+.edit-card {
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+    background-color: beige;
+}
+
+.edit-button {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.box {
+    margin: 2em 0;
+    background: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+}
+.box .box-title {
+    font-size: 1.2em;
+    background: #5fc2f5;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+
+.mat-card-top {
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #5fc2f5;
+    color: #FFF;
+}
+
+.mat-card-top .mat-card-main {
+    background-color: white;
+    color: black;
+}
