@@ -39,6 +39,8 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatTableModule } from '@angular/material/table'
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { UserEditComponent } from './pages/user-edit/user-edit.component';
 
@@ -79,6 +81,7 @@ import { DataParseService } from './services/data.service';
     MatDividerModule,
     MatToolbarModule,
     MatTableModule,
+    MatDialogModule,
     HttpClientModule
   ],
   providers: [    

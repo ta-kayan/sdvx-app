@@ -1,13 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Difficult } from '../../indicate';
-import { DIFFICULTS_18P7, DIFFICULTS_18P6, } from '../../lv18s-tables';
+import { 
+  DIFFICULTS_18P7,
+  DIFFICULTS_18P6,
+  DIFFICULTS_18P5,
+  DIFFICULTS_18P4,
+  DIFFICULTS_18P3,
+  DIFFICULTS_18P2,
+  DIFFICULTS_18P1,
+  DIFFICULTS_18P0,
+  DIFFICULTS_18M1,
+  DIFFICULTS_18M2,
+  DIFFICULTS_18M3,
+  DIFFICULTS_18M4,
+  DIFFICULTS_18M5,
+  DIFFICULTS_18M6,
+  DIFFICULTS_18M7
+} from '../../lv18s-tables';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
-
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // 以下追加したもの
 import { AuthService } from './../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+
+export interface DialogData {
+  name: string;
+  score: number;
+}
 
 @Component({
   selector: 'app-difficult',
@@ -15,11 +36,37 @@ import { FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./difficult.component.css']
 })
 export class DifficultComponent implements OnInit {
-
   difficults_18p7 = DIFFICULTS_18P7;
   difficults_18p6 = DIFFICULTS_18P6;
+  difficults_18p5 = DIFFICULTS_18P5;
+  difficults_18p4 = DIFFICULTS_18P4;
+  difficults_18p3 = DIFFICULTS_18P3;
+  difficults_18p2 = DIFFICULTS_18P2;
+  difficults_18p1 = DIFFICULTS_18P1;
+  difficults_18p0 = DIFFICULTS_18P0;
+  difficults_18m1 = DIFFICULTS_18M1;
+  difficults_18m2 = DIFFICULTS_18M2;
+  difficults_18m3 = DIFFICULTS_18M3;
+  difficults_18m4 = DIFFICULTS_18M4;
+  difficults_18m5 = DIFFICULTS_18M5;
+  difficults_18m6 = DIFFICULTS_18M6;
+  difficults_18m7 = DIFFICULTS_18M7;
   selectedDifficult_18p7: Difficult;
   selectedDifficult_18p6: Difficult;
+  selectedDifficult_18p5: Difficult;
+  selectedDifficult_18p4: Difficult;
+  selectedDifficult_18p3: Difficult;
+  selectedDifficult_18p2: Difficult;
+  selectedDifficult_18p1: Difficult;
+  selectedDifficult_18p0: Difficult;
+  selectedDifficult_18m1: Difficult;
+  selectedDifficult_18m2: Difficult;
+  selectedDifficult_18m3: Difficult;
+  selectedDifficult_18m4: Difficult;
+  selectedDifficult_18m5: Difficult;
+  selectedDifficult_18m6: Difficult;
+  selectedDifficult_18m7: Difficult;
+
 
   public csvStringData;
   csvControl;
@@ -42,6 +89,7 @@ export class DifficultComponent implements OnInit {
   constructor(
     private storage: AngularFireStorage,
     private store: AngularFirestore,
+    public dialog: MatDialog,
     public auth: AuthService,
     private http: HttpClient,
     private formBuilder: FormBuilder
@@ -142,12 +190,9 @@ export class DifficultComponent implements OnInit {
     });
   }
 
-  onSelect_18p7(difficult: Difficult): void {
-    this.selectedDifficult_18p7 = difficult;
-  }
-  onSelect_18p6(difficult: Difficult): void {
-    this.selectedDifficult_18p6 = difficult;
-  }
+  // onSelect_18p7(difficult: Difficult): void {
+  //   this.selectedDifficult_18p7 = difficult;
+  // }
 
   getUploadCSVArray(data) {
     //console.log(data);
@@ -178,25 +223,125 @@ export class DifficultComponent implements OnInit {
         dic[name] = { name: name, grade: grade, difficult: difficult, rank: rank, score: score}
       }
     }
-    console.log(dic);
     
     for(var i = 0; i < this.difficults_18p7.length; i++){
       var musicname = this.difficults_18p7[i].name;
-      //console.log(musicname);
       try {
         this.difficults_18p7[i].rank = dic[musicname].rank;
         this.difficults_18p7[i].score = dic[musicname].score;
-      } catch (e) {}
+      } catch (e) { this.difficults_18p7[i].rank = '-' }
     }
         
     for(var i = 0; i < this.difficults_18p6.length; i++){
       var musicname = this.difficults_18p6[i].name;
-      //console.log(musicname);
       try {
-        //console.log(dic[musicname].name);
         this.difficults_18p6[i].rank = dic[musicname].rank;
         this.difficults_18p6[i].score = dic[musicname].score;
-      } catch (e) {}
+      } catch (e) { this.difficults_18p6[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18p5.length; i++){
+      var musicname = this.difficults_18p5[i].name;
+      try {
+        this.difficults_18p5[i].rank = dic[musicname].rank;
+        this.difficults_18p5[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18p5[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18p4.length; i++){
+      var musicname = this.difficults_18p4[i].name;
+      try {
+        this.difficults_18p4[i].rank = dic[musicname].rank;
+        this.difficults_18p4[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18p4[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18p3.length; i++){
+      var musicname = this.difficults_18p3[i].name;
+      try {
+        this.difficults_18p3[i].rank = dic[musicname].rank;
+        this.difficults_18p3[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18p3[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18p2.length; i++){
+      var musicname = this.difficults_18p2[i].name;
+      try {
+        this.difficults_18p2[i].rank = dic[musicname].rank;
+        this.difficults_18p2[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18p2[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18p1.length; i++){
+      var musicname = this.difficults_18p1[i].name;
+      try {
+        this.difficults_18p1[i].rank = dic[musicname].rank;
+        this.difficults_18p1[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18p1[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18p0.length; i++){
+      var musicname = this.difficults_18p0[i].name;
+      try {
+        this.difficults_18p0[i].rank = dic[musicname].rank;
+        this.difficults_18p0[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18p0[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18m1.length; i++){
+      var musicname = this.difficults_18m1[i].name;
+      try {
+        this.difficults_18m1[i].rank = dic[musicname].rank;
+        this.difficults_18m1[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18m1[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18m2.length; i++){
+      var musicname = this.difficults_18m2[i].name;
+      try {
+        this.difficults_18m2[i].rank = dic[musicname].rank;
+        this.difficults_18m2[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18m2[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18m3.length; i++){
+      var musicname = this.difficults_18m3[i].name;
+      try {
+        this.difficults_18m3[i].rank = dic[musicname].rank;
+        this.difficults_18m3[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18m3[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18m4.length; i++){
+      var musicname = this.difficults_18m4[i].name;
+      try {
+        this.difficults_18m4[i].rank = dic[musicname].rank;
+        this.difficults_18m4[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18m4[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18m5.length; i++){
+      var musicname = this.difficults_18m5[i].name;
+      try {
+        this.difficults_18m5[i].rank = dic[musicname].rank;
+        this.difficults_18m5[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18m5[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18m6.length; i++){
+      var musicname = this.difficults_18m6[i].name;
+      try {
+        this.difficults_18m6[i].rank = dic[musicname].rank;
+        this.difficults_18m6[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18m6[i].rank = '-' }
+    }
+
+    for(var i = 0; i < this.difficults_18m7.length; i++){
+      var musicname = this.difficults_18m7[i].name;
+      try {
+        this.difficults_18m7[i].rank = dic[musicname].rank;
+        this.difficults_18m7[i].score = dic[musicname].score;
+      } catch (e) { this.difficults_18m7[i].rank = '-' }
     }
   }
 
@@ -223,4 +368,22 @@ export class DifficultComponent implements OnInit {
     });
   }
 
+  openDialog(difficult: Difficult) {
+    // this.selectedDifficult_18p7 = difficult;
+    this.dialog.open(DialogDataDifficultDialog, {
+      data: {
+        name: difficult.name,
+        score: difficult.score
+      }
+    });
+  }
+
+}
+
+@Component({
+  selector: 'dialog-data-difficult-dialog',
+  templateUrl: 'dialog-data-difficult-dialog.html',
+})
+export class DialogDataDifficultDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }

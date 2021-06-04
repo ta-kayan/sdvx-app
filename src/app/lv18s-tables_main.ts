@@ -21,9 +21,7 @@ export const DIFFICULTS_18P6: Difficult[] = [
   { id: 7, difficult:18, rank:'', grade:'', name: 'KAC 2013 Emperor Side', score:0 , cols: 1, rows: 1}, 
   { id: 8, difficult:18, rank:'', grade:'', name: 'Blastix Riotz', score:0 , cols: 1, rows: 1},
   { id: 9, difficult:18, rank:'', grade:'', name: 'Black Emperor', score:0 , cols: 1, rows: 1},
-  { id: 10, difficult:18, rank:'', grade:'', name: 'きたさいたま2000', score:0 , cols: 1, rows: 1},
-]
-export const DIFFICULTS_18P6_2: Difficult[] = [
+  { id: 10, difficult:18, rank:'', grade:'', name: 'きたさいたま2000', score:0 , cols: 1, rows: 1}, 
   { id: 11, difficult:18, rank:'', grade:'', name: 'キュリオシティ', score:0 , cols: 1, rows: 1},
   { id: 12, difficult:18, rank:'', grade:'', name: 'XHAOS JUDGE', score:0 , cols: 1, rows: 1},
   { id: 13, difficult:18, rank:'', grade:'', name: '混乱少女♥そふらんちゃん!!', score:0 , cols: 1, rows: 1}, 

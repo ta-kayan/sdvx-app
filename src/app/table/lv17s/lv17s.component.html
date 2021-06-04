@@ -1,1 +1,335 @@
-<p>lv17s works!</p>
+<!-- csvファイルアップロード欄 -->
+<mat-card class="difficult-card">
+  <p style="color:black;">データ入力</p>
+  <form [formGroup]="csvStringData" (ngSubmit)="onLoadData(csvStringData.value)">
+  <mat-form-field appearance="fill">
+    <mat-label>csv</mat-label>
+    <mat-hint>コピーしたcsvデータを貼り付けてください</mat-hint>
+    <textarea style="color:black;" matInput id="csv" type="text" formControlName="csv" [formControl]="csvControl">
+    </textarea>
+  </mat-form-field>
+  <br><br>
+  <button class="edit-button" type="submit" mat-raised-button color="primary">データ更新</button>
+  </form>
+</mat-card>
+<br>
+
+<img src="./assets/lv17slogo.jpeg" alt="lv17s" style='display: block; margin: auto;'>
+<a href="./assets/lv17s.jpeg" style='margin: 0 auto;' download>難易度表ダウンロード</a>
+
+<!-- データ表示-->
+<table class="tbl-r02">
+  <tr>
+    <th>+7</th>
+    <td *ngFor="let difficult_17p7 of difficults_17p7">
+      <div [ngSwitch]="difficult_17p7.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p7 === selectedDifficult_17p7"
+          (click)="openDialog(difficult_17p7)">
+          <p>{{difficult_17p7.name}}<br>{{difficult_17p7.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p7 === selectedDifficult_17p7"
+          (click)="openDialog(difficult_17p7)">
+          <p>{{difficult_17p7.name}}<br>{{difficult_17p7.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>+6</th>
+    <td *ngFor="let difficult_17p6 of difficults_17p6">
+      <div [ngSwitch]="difficult_17p6.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p6 === selectedDifficult_17p6"
+          (click)="openDialog(difficult_17p6)">
+          <p>{{difficult_17p6.name}}<br>{{difficult_17p6.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p6 === selectedDifficult_17p6"
+          (click)="openDialog(difficult_17p6)">
+          <p>{{difficult_17p6.name}}<br>{{difficult_17p6.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>+5</th>
+    <td *ngFor="let difficult_17p5 of difficults_17p5">
+      <div [ngSwitch]="difficult_17p5.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p5 === selectedDifficult_17p5"
+          (click)="openDialog(difficult_17p5)">
+          <p>{{difficult_17p5.name}}<br>{{difficult_17p5.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p5 === selectedDifficult_17p5"
+          (click)="openDialog(difficult_17p5)">
+          <p>{{difficult_17p5.name}}<br>{{difficult_17p5.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>+4</th>
+    <td *ngFor="let difficult_17p4 of difficults_17p4">
+      <div [ngSwitch]="difficult_17p4.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p4 === selectedDifficult_17p4"
+          (click)="openDialog(difficult_17p4)">
+          <p>{{difficult_17p4.name}}<br>{{difficult_17p4.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p4 === selectedDifficult_17p4"
+          (click)="openDialog(difficult_17p4)">
+          <p>{{difficult_17p4.name}}<br>{{difficult_17p4.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>+3</th>
+    <td *ngFor="let difficult_17p3 of difficults_17p3">
+      <div [ngSwitch]="difficult_17p3.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p3 === selectedDifficult_17p3"
+          (click)="openDialog(difficult_17p3)">
+          <p>{{difficult_17p3.name}}<br>{{difficult_17p3.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p3 === selectedDifficult_17p3"
+          (click)="openDialog(difficult_17p3)">
+          <p>{{difficult_17p3.name}}<br>{{difficult_17p3.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>+2</th>
+    <td *ngFor="let difficult_17p2 of difficults_17p2">
+      <div [ngSwitch]="difficult_17p2.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p2 === selectedDifficult_17p2"
+          (click)="openDialog(difficult_17p2)">
+          <p>{{difficult_17p2.name}}<br>{{difficult_17p2.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p2 === selectedDifficult_17p2"
+          (click)="openDialog(difficult_17p2)">
+          <p>{{difficult_17p2.name}}<br>{{difficult_17p2.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>+1</th>
+    <td *ngFor="let difficult_17p1 of difficults_17p1">
+      <div [ngSwitch]="difficult_17p1.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p1 === selectedDifficult_17p1"
+          (click)="openDialog(difficult_17p1)">
+          <p>{{difficult_17p1.name}}<br>{{difficult_17p1.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p1 === selectedDifficult_17p1"
+          (click)="openDialog(difficult_17p1)">
+          <p>{{difficult_17p1.name}}<br>{{difficult_17p1.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>±0</th>
+    <td *ngFor="let difficult_17p0 of difficults_17p0">
+      <div [ngSwitch]="difficult_17p0.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17p0 === selectedDifficult_17p0"
+          (click)="openDialog(difficult_17p0)">
+          <p>{{difficult_17p0.name}}<br>{{difficult_17p0.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17p0 === selectedDifficult_17p0"
+          (click)="openDialog(difficult_17p0)">
+          <p>{{difficult_17p0.name}}<br>{{difficult_17p0.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>-1</th>
+    <td *ngFor="let difficult_17m1 of difficults_17m1">
+      <div [ngSwitch]="difficult_17m1.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17m1 === selectedDifficult_17m1"
+          (click)="openDialog(difficult_17m1)">
+          <p>{{difficult_17m1.name}}<br>{{difficult_17m1.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17m1 === selectedDifficult_17m1"
+          (click)="openDialog(difficult_17m1)">
+          <p>{{difficult_17m1.name}}<br>{{difficult_17m1.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>-2</th>
+    <td *ngFor="let difficult_17m2 of difficults_17m2">
+      <div [ngSwitch]="difficult_17m2.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17m2 === selectedDifficult_17m2"
+          (click)="openDialog(difficult_17m2)">
+          <p>{{difficult_17m2.name}}<br>{{difficult_17m2.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17m2 === selectedDifficult_17m2"
+          (click)="openDialog(difficult_17m2)">
+          <p>{{difficult_17m2.name}}<br>{{difficult_17m2.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>-3</th>
+    <td *ngFor="let difficult_17m3 of difficults_17m3">
+      <div [ngSwitch]="difficult_17m3.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17m3 === selectedDifficult_17m3"
+          (click)="openDialog(difficult_17m3)">
+          <p>{{difficult_17m3.name}}<br>{{difficult_17m3.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17m3 === selectedDifficult_17m3"
+          (click)="openDialog(difficult_17m3)">
+          <p>{{difficult_17m3.name}}<br>{{difficult_17m3.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>-4</th>
+    <td *ngFor="let difficult_17m4 of difficults_17m4">
+      <div [ngSwitch]="difficult_17m4.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17m4 === selectedDifficult_17m4"
+          (click)="openDialog(difficult_17m4)">
+          <p>{{difficult_17m4.name}}<br>{{difficult_17m4.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17m4 === selectedDifficult_17m4"
+          (click)="openDialog(difficult_17m4)">
+          <p>{{difficult_17m4.name}}<br>{{difficult_17m4.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>-5</th>
+    <td *ngFor="let difficult_17m5 of difficults_17m5">
+      <div [ngSwitch]="difficult_17m5.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17m5 === selectedDifficult_17m5"
+          (click)="openDialog(difficult_17m5)">
+          <p>{{difficult_17m5.name}}<br>{{difficult_17m5.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17m5 === selectedDifficult_17m5"
+          (click)="openDialog(difficult_17m5)">
+          <p>{{difficult_17m5.name}}<br>{{difficult_17m5.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>-6</th>
+    <td *ngFor="let difficult_17m6 of difficults_17m6">
+      <div [ngSwitch]="difficult_17m6.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17m6 === selectedDifficult_17m6"
+          (click)="openDialog(difficult_17m6)">
+          <p>{{difficult_17m6.name}}<br>{{difficult_17m6.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17m6 === selectedDifficult_17m6"
+          (click)="openDialog(difficult_17m6)">
+          <p>{{difficult_17m6.name}}<br>{{difficult_17m6.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<table class="tbl-r02">
+  <tr>
+    <th>-7</th>
+    <td *ngFor="let difficult_17m7 of difficults_17m7">
+      <div [ngSwitch]="difficult_17m7.rank">
+        <div class='tds' *ngSwitchCase="'S'"
+          [class.selected]="difficult_17m7 === selectedDifficult_17m7"
+          (click)="openDialog(difficult_17m7)">
+          <p>{{difficult_17m7.name}}<br>{{difficult_17m7.rank}}</p>
+        </div>
+        <div class='tdnots' *ngSwitchDefault
+          [class.selected]="difficult_17m7 === selectedDifficult_17m7"
+          (click)="openDialog(difficult_17m7)">
+          <p>{{difficult_17m7.name}}<br>{{difficult_17m7.rank}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
