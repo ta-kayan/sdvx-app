@@ -9,8 +9,8 @@
       .roulette {
         display: inline-block;
         border:1px solid #000000;
-        font-size:40px;
-        width:60px;
+        font-size:20px;
+        width:200px;
       }
     </style>
     <script language="javascript" type="text/javascript">
@@ -18,26 +18,56 @@
 
       // ルーレットを開始
       function start() {
-        roulette = setInterval(function() {
+        // 
+        roulette_stage = setInterval(function() {
           // 1〜99の範囲でランダムな数値を作成
-          var idx = Math.floor( Math.random() * 99 ) + 1;
+          let stage = ['2 STAGE', '3 STAGE', '4 STAGE'];
+          var idx = Math.floor( Math.random() * 3 );
+          var result = stage[idx]
           // ルーレット
-          document.getElementById("roulette").innerHTML = idx;
+          document.getElementById("roulette_stage").innerHTML = result;
+        }, 100);
+
+        // レベル制限
+        roulette_level = setInterval(function() {
+          let level = ['制限なし', '先鋒戦 Level 8~10', '中堅戦 Level 10~11', '大将戦 Level 12'];
+          var idx = Math.floor( Math.random() * 4 );
+          var result = level[idx]
+          // ルーレット
+          document.getElementById("roulette_level").innerHTML = result;
+        }, 100);
+
+        // 譜面傾向
+        roulette_trend = setInterval(function() {
+          let stage = ['制限なし', 'NOTES', 'CHORD', 'PEAK', 'CHARGE', 'SCRATCH', 'SOF-LAN'];
+          var idx = Math.floor( Math.random() * 7 );
+          var result = stage[idx]
+          // ルーレット
+          document.getElementById("roulette_trend").innerHTML = result;
         }, 100);
       }
  
       // ルーレットを停止
       function stop() {
-        if(roulette) {
-          clearInterval(roulette);
+        if(roulette_stage) {
+          clearInterval(roulette_stage);
+        }
+        if(roulette_level) {
+          clearInterval(roulette_level);
+        }
+        if(roulette_stage) {
+          clearInterval(roulette_trend);
         }
       }
     </script>
   </head>
   <body>
+    <h1 class="outline">AWESOME ROULETTE</h1>
     <div class="outline">
-      <div class="roulette" id="roulette">1</div>
-      <br />
+      <div class="roulette" id="roulette_stage">4 STAGE</div>
+      <div class="roulette" id="roulette_level">先鋒戦 Level 8~10</div>
+      <div class="roulette" id="roulette_trend">NOTES</div>
+      <br /><br />
       <input type="button" value="スタート" id="start" onclick="start();"/>
       <input type="button" value="ストップ" id="stop" onclick="stop();"/>
     </div>
